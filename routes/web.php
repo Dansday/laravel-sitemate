@@ -7,7 +7,7 @@ Route::get('/', function () {
     return view('api-client');
 });
 
-Route::post('api/issues', [IssueController::class, 'create']);
-Route::get('api/issues/{id}', [IssueController::class, 'read']);
-Route::put('api/issues/{id}', [IssueController::class, 'update']);
-Route::delete('api/issues/{id}', [IssueController::class, 'delete']);
+Route::get('api/issues/', [IssueController::class, 'index']);
+Route::post('api/issues/create', [IssueController::class, 'create']);
+Route::put('api/issues/update/{id}', [IssueController::class, 'update']);
+Route::delete('api/issues/delete/{id}', [IssueController::class, 'delete']);

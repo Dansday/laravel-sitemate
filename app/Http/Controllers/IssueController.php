@@ -11,22 +11,17 @@ use App\Models\Issue;
 
 class IssueController extends Controller
 {
+    public function index()
+    {
+        $issues = Issue::all();
+        return response()->json($issues);
+    }
+
     public function create(Request $request)
     {
         $issue = Issue::create($request->all());
         \Log::info('Create operation:', $issue->toArray());
         return response()->json($issue, 201);
-    }
-
-    public function read($id)
-    {
-        $issue = Issue::find($id);
-
-        if ($issue) {
-            return response()->json($issue);
-        } else {
-            return response()->json(['message' => 'Issue not found'], 404);
-        }
     }
 
     public function update(Request $request, $id)
